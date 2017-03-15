@@ -26,7 +26,7 @@ using namespace std;
 #define mp make_pair
 
 int main() {
-    ios_base::sync_with_stdio(false);
+	ios_base::sync_with_stdio(false);
 	ll n;
 	while (cin>>n && n) {
 		ll cnt = ceil(sqrt(n));
