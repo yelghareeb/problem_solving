@@ -1,6 +1,8 @@
 /*
 	UVA 11354
 	Author: Youssef ElGhareeb
+	
+	Solution description: http://codeforces.com/blog/entry/7566 
 */
 
 #include <iostream>
