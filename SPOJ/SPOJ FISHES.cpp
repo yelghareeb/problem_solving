@@ -3,16 +3,16 @@
 	Author: Youssef ElGhareeb
 	
 	Idea:
-	- The first simplification is in the Summation formula as follows
+	- The first simplification is in the summation formula as follows
 		  SUM { Xi * (V . Vi) } 
 		= SUM {V . Xi Vi} 
 		= V . SUM {Xi Vi}
 	- As you can observe, Xi Vi is constant, so we can precalculate this vector by multiplying each vector by its Xi and adding them all,
-	  let name this vector "Combined vector"
+	  let's name this vector "Combined vector"
 	- Now the problem is reduced to the following: we need to find a subrectangle, where the dot product of its V with the combined vector is maximum
 	- The second observation is that the dot product is equivalent to the sum of the same subrectangle with transformed values, where each value
 	  is replaced with its corresponding value in the combined vector (try this on paper)
-	- Now the problem is reduced to a standard max subrectangle sum, than can be solved in O(n ^ 4)
+	- Now the problem is reduced to a standard max subrectangle sum, than can be solved in O(n ^ 4) using precalculations
 */
 
 #include <iostream>
