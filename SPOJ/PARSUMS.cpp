@@ -1,3 +1,30 @@
+/*
+	SPOJ PARSUMS
+	Author: Youssef ElGhareeb
+	
+	Idea:
+		concatenate the array to itself, so that the total length of the array is 2*n
+		start from the rightmost index and go backward, accumulating the elements. Now we have 2 cases:
+			1. If the sum is negative, and the current index is less than n, 
+			   then a rotation starting at the current index is not feasible
+			2. If the sum is positive, reset the sum, and increment the answer if the index is less than n
+			
+		Example:
+			orig_array = [1 2 -3 4]
+			concatenated array = [1 2 -3 4 1 2 -3 4]
+			
+			index 	sum_before	 sum_after 	sum_after_resetting 	Answer
+			  8			 0			 4				 0				  0
+			  7			 0			-3				-3				  0
+			  6			-3			-1 				-1 				  0
+			  5			-1			 0				 0				  0
+			  
+			  4			 0 			 4				 0				  1
+			  3			 0			-3				-3				  1
+			  2			-3			-1				-1				  1
+			  1			-1			 0				 0				  2
+*/
+
 #include <iostream>
 #include <string>
 #include <map>
