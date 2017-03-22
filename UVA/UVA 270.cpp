@@ -23,24 +23,25 @@ using namespace std;
 const double EPS = 0.000001;
 
 int gcd(int x, int y) {
-	if (y == 0) return x;
-	return gcd(y, x % y);
+    if (y == 0) return x;
+    return gcd(y, x % y);
 }
 
+/* This struct represents the slope of the line only, so it doesn't uniquely identify a line */
 struct Line {
     int dx, dy;
 
-	Line(int _dx, int _dy) {
-		dx = _dx;
-		dy = _dy;
-		int g = gcd(dx, dy);
-		dx /= g;
-		dy /= g;
-		if (dx < 0 && dy < 0) {
-			dx *= -1;
-			dy *= -1;
-		}
-	}
+    Line(int _dx, int _dy) {
+        dx = _dx;
+        dy = _dy;
+        int g = gcd(dx, dy);
+        dx /= g;
+        dy /= g;
+        if (dx < 0 && dy < 0) {
+            dx *= -1;
+            dy *= -1;
+        }
+}
     
     /* Overloading the < operator ensures uniqueness when we use a map */
     bool operator < (const Line& l2) const {
@@ -74,11 +75,11 @@ int main() {
         int n = v.size();
         int res = 0;
         for (int i=0; i<n; i++) { // Consider a line passing by the ith point
-			map<Line, int> cnts;
+            map<Line, int> cnts;
             for (int j=i + 1; j<n; j++) {
                 Line line = get_line(v[i], v[j]);
                 cnts[line]++;
-				res = max(res, cnts[line] + 1);
+                res = max(res, cnts[line] + 1);
             }
         }
         printf("%d\n", res);
