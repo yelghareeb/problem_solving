@@ -1,6 +1,9 @@
 /*
 	Live Archive 3569
 	Author: Youssef ElGhareeb
+	
+	Idea:
+	 - Run a BFS from each node and record the distance to the furthest node. Maximize over all these distances.
 */
 
 #include <iostream>
