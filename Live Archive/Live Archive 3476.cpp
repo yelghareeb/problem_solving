@@ -59,6 +59,14 @@ inline bool is_block(pii loc) {
 	return g[loc.first][loc.second] >= 3;
 }
 
+inline bool is_end (pair<int, int>& loc) {
+	return loc.first > n;
+}
+
+/* Check that the grid is consistent, with 2 conditions:
+	1. No cells should be free
+	2. Any numbered block cell should exactly contain that number of lamps adjacent to it
+*/
 inline bool check_consistency() {
 	int num_lamps = 0;
 	for (int i=1; i<=n; i++) {
@@ -86,10 +94,6 @@ inline void get_next (pair<int, int> &loc) {
 		loc.second = 1;
 		loc.first++;
 	}
-}
-
-inline bool is_end (pair<int, int>& loc) {
-	return loc.first > n;
 }
 
 inline vector<pii> mark_positions(pii& loc) {
@@ -128,10 +132,6 @@ inline void free_positions(vector<pii>& positions) {
 }
 
 void solve (pair<int, int> loc) {
-	if (is_end(loc)) {
-		check_consistency();
-		return;
-	}
 	while (!is_end(loc)) {
 		if (is_free(loc)) {
 			vector<pii> positions = mark_positions(loc);
