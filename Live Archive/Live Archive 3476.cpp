@@ -1,3 +1,19 @@
+/*
+	Live Archive 3476
+	Author: Youssef ElGhareeb
+	
+	Idea:
+		- We will solve this problem using backtracking
+		- At each free cell, we have 2 options:
+			1. Put a lamp in this cell. In this case we need to mark all cells in its row and column as covered.
+			   We also need to keep track of those cells to free them.
+			2. Leave the cell
+		- Continue backtracking until finishing all the cells.
+		- After finishing, check for consistency:
+			1. There shouldn't be any free cells
+			2. Numbered block cells should contain exactly that number of lamps adjacent to them
+*/
+
 #include <iostream>
 #include <stdio.h>
 #include <cmath>
