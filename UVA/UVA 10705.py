@@ -15,19 +15,12 @@ def solve(n, s, k, sol, pos):
     rem = k - pos
     if pow2[rem] - 1 < n or -1 * (pow2[rem] - 1) > n:
         return False
-    positive = False
-    if n > 0:
-        positive = True
     flag = False
     flag = flag | solve(n, s, k, sol + "0", pos + 1)
     if s[pos] == 'p':
-        nn = n - pow2[rem - 1]
-        if not (not positive and nn > 0):
-            flag = flag | solve (nn, s, k, sol + "1", pos + 1)
+        flag = flag | solve (n - pow2[rem - 1], s, k, sol + "1", pos + 1)
     else:
-        nn = n + pow2[rem - 1]
-        if not (positive and nn < 0):
-            flag = flag | solve (nn, s, k, sol + "1", pos + 1)
+        flag = flag | solve (n + pow2[rem - 1], s, k, sol + "1", pos + 1)
     return flag
 
 if __name__=="__main__":
