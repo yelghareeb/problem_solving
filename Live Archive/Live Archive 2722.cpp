@@ -3,8 +3,13 @@
 	Author: Youssef ElGhareeb
 	
 	Idea: Dynamic programming
-		define dp[350][2][2], where dp[position][switch_state][match] is the minimum number of switches
-		that need to be pressed to make all lights from pos + 1 to the end matching, and the current switch matching or not matching
+		define dp[350][2][2], where: 
+			dp[position][switch_state][MATCH] is the minimum number of switches
+				that need to be pressed to make all lights from pos + 1 to the end matching, and the light at current position is matching
+			dp[position][switch_state][UNMATCH] is the minimum number of switches
+				that need to be pressed to make all lights from pos + 1 to the end matching, and the light at current position is not matching
+				
+		switch_state is 0/1 (switch is pressed/not pressed)
 */
 
 #include <bits/stdc++.h>
