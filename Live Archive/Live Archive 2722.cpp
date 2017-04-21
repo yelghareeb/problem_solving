@@ -5,8 +5,6 @@
 	Idea: Dynamic programming
 		define dp[350][2][2], where dp[position][switch_state][match] is the minimum number of switches
 		that need to be pressed to make all lights from pos + 1 to the end matching, and the current switch matching or not matching
-		
-	Note that the recurrence doesn't have choices at each step, so the answer is unique if it exists
 */
 
 #include <bits/stdc++.h>
