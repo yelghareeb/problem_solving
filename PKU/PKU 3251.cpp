@@ -18,7 +18,6 @@ using namespace std;
 const short N = 105;
 
 int main() {
-	freopen("in.txt", "r", stdin);
 	int n;
 	char s[N][N];
 	scanf ("%d", &n);
