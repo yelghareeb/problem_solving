@@ -83,6 +83,29 @@ struct SuffixArray {
         }
         return suffixArray;
     }
+    
+    vector<int> getLCP (string s) {
+        vector<int> Phi(n);
+        vector<int> PLCP(n);
+        vector<int> LCP(n - 1, 0);
+        int i, L;
+        Phi[SA[0]] = -1; // default value
+        for (i = 1; i < n; i++) // compute Phi in O(n)
+            Phi[SA[i]] = SA[i - 1]; // remember which suffix is behind this suffix
+        for (i = L = 0; i < n; i++) { // compute Permuted LCP in O(n)
+            if (Phi[i] == -1) {
+                PLCP[i] = 0;
+                continue;
+            } // special case
+            while (s[i + L] == s[Phi[i] + L]) L++; // L increased max n times
+            PLCP[i] = L;
+            L = max(L - 1, 0); // L decreased max n times
+        }
+        for (i = 0; i < n - 1; i++) {// compute LCP in O(n)
+            LCP[i] = PLCP[SA[i + 1]]; // put the permuted LCP to the correct position
+        }
+        return LCP;
+    }
 };
 
 int main() {
@@ -92,8 +115,11 @@ int main() {
     string s = "GATAGACA";
     SuffixArray SA('$');
     vector<int> suffixArray = SA.getSA(s);
-    for (int pos : suffixArray) {
-        cout << s.substr(pos, s.length() - pos) << endl;
+    vector<int> LCP = SA.getLCP(s);
+    for (int i = 0; i < s.length(); ++i) {
+        int pos = suffixArray[i];
+        int len = LCP[i];
+        cout << s.substr(pos, s.length() - pos) << ", LCP[" << i << "] = " << len << endl;
     }
     return 0;
 }
